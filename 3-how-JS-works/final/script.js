@@ -17,16 +17,16 @@ var retirement = function(year) {
 
 // variables
 
-console.log(age);
+console.log("1 "+age);
 var age = 23;
 
 function foo() {
-    console.log(age);
+    console.log("2 "+age);
     var age = 65;
-    console.log(age);
+    console.log("3 "+age);
 }
 foo();
-console.log(age);
+console.log("4 "+age);
 */
 
 
@@ -111,3 +111,4 @@ var mike = {
 mike.calculateAge = john.calculateAge;
 mike.calculateAge();
 */
+
