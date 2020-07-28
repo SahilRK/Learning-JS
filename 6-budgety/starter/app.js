@@ -24,6 +24,37 @@ var budgetController = (function(){
         }
     }
 
+    return{
+        addItem: function(type,desc,val){
+            //Initialize variables
+            var newItem,ID;
+
+            //Create ID for newItem
+            if(data.allItems[type].length > 0){
+                ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
+            }
+            else{
+                ID = 0;
+            }
+
+            //Create new item based on income or expense
+            if(type === 'exp'){
+                newItem = new Expense(ID,desc,val);
+            }else if(type === 'inc'){
+                newItem = new Income(ID,desc,val);
+            }
+
+            //Push Item to the the datastructure
+            data.allItems[type].push(newItem);
+
+            //return the new item
+            return newItem;
+        },
+        testing: function(){
+            console.log(data);
+        }
+    }
+
 })();
 
 //UI CONTROLLER
@@ -42,9 +73,9 @@ var uIController = (function(){
         //Gets expense inputs from the user
         getInputValues: function(){
             return {
-                inputType: document.querySelector(DOMStrings.inputType).value,
-                inputDesc: document.querySelector(DOMStrings.inputDesc).value,
-                inputValue: document.querySelector(DOMStrings.inputValue).value
+                type: document.querySelector(DOMStrings.inputType).value,
+                desc: document.querySelector(DOMStrings.inputDesc).value,
+                value: document.querySelector(DOMStrings.inputValue).value
             }
         },
 
@@ -75,18 +106,22 @@ var appController = (function(budgetCtrl,uiCtrl){
     };
 
     var ctrlAddItem = function(){
+    //declare variables
+    var inputData,newItem;
+
     /* To Do: */
     //1: Get input from the user
-    var inputData = uiCtrl.getInputValues();
+    inputData = uiCtrl.getInputValues();
     console.log(inputData);
     
     //2: Add item to the budget controller
-
+    newItem = budgetController.addItem(inputData.type,inputData.desc,inputData.value);
     //3: Add the item to the UI
 
     //4: Calculate the budget
 
     //5: Display the budget in the UI
+
     };
 
     return{
