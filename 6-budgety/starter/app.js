@@ -65,7 +65,9 @@ var uIController = (function(){
         inputType: '.add__type',
         inputDesc: '.add__description',
         inputValue: '.add__value',
-        addBtn: '.add__btn'
+        addBtn: '.add__btn',
+        incomeContainer: '.income__list',
+        expensesContainer: '.expenses__list'
     }
 
     //Public part of the main controller function
@@ -77,6 +79,31 @@ var uIController = (function(){
                 desc: document.querySelector(DOMStrings.inputDesc).value,
                 value: document.querySelector(DOMStrings.inputValue).value
             }
+        },
+
+        addListItem: function(listItemObj, type){
+            //Initialize loc variables
+            var htmlItemStr,newHtmlItemStr,domElement;
+
+            //Create an HTML string with placeholders
+            if(type === 'inc'){
+                domElement = DOMStrings.incomeContainer;
+
+                htmlItemStr = '<div class="item clearfix" id="income-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">+ %value%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>'
+            }
+            else if( type === 'exp'){
+                domElement = DOMStrings.expensesContainer;
+
+                htmlItemStr = '<div class="item clearfix" id="expense-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">- %value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>'
+            }            
+            //Replace the placeholders with actual data
+            newHtmlItemStr = htmlItemStr.replace('%id%', listItemObj.id);
+            newHtmlItemStr = newHtmlItemStr.replace('%description%', listItemObj.description);
+            newHtmlItemStr = newHtmlItemStr.replace('%value%', listItemObj.value);
+
+            //Insert the HTML into the DOM
+            document.querySelector(domElement).insertAdjacentHTML('beforeend',newHtmlItemStr);
+
         },
 
         //Returns DOMStrings object to all functions that call this function.
@@ -117,7 +144,7 @@ var appController = (function(budgetCtrl,uiCtrl){
     //2: Add item to the budget controller
     newItem = budgetController.addItem(inputData.type,inputData.desc,inputData.value);
     //3: Add the item to the UI
-
+    uiCtrl.addListItem(newItem,inputData.type);
     //4: Calculate the budget
 
     //5: Display the budget in the UI
@@ -127,7 +154,7 @@ var appController = (function(budgetCtrl,uiCtrl){
     return{
         //A public function to execute all functions
         init: function(){
-            console.log("Application has started");
+            //console.log("Application has started");
             setupEventListeners();
         }
     }
