@@ -170,7 +170,13 @@ var uIController = (function(){
             document.querySelector(DOMStrings.totBudget).textContent = obj.budget;
             document.querySelector(DOMStrings.totIncLabel).textContent = obj.totalInc;
             document.querySelector(DOMStrings.totExpLabel).textContent = obj.totalExp;
-            document.querySelector(DOMStrings.incPerc).textContent = obj.percentage;
+            if(obj.percentage > 0){
+                document.querySelector(DOMStrings.incPerc).textContent = obj.percentage;
+            }
+            else{
+                document.querySelector(DOMStrings.incPerc).textContent = "--";
+            }
+            
         },
 
         //Returns DOMStrings object to all functions that call this function.
