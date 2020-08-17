@@ -215,30 +215,31 @@ var appController = (function(budgetCtrl,uiCtrl){
 
         //3: Display the budget in the UI
         uiCtrl.displayBudget(budget);
+
     }
 
     var ctrlAddItem = function(){
-    //declare variables
-    var inputData,newItem;
 
-    /* To Do: */
-    //1: Get input from the user
-    inputData = uiCtrl.getInputValues();
-    
-    if(inputData.desc !== "" && !isNaN(inputData.value) && inputData.value > 0){
+        //declare variables
+        var inputData,newItem;
 
-        //2: Add item to the budget controller
-        newItem = budgetCtrl.addItem(inputData.type,inputData.desc,inputData.value);
-        //3: Add the item to the UI
-        uiCtrl.addListItem(newItem,inputData.type);
-
-        //4: Clear all the input fields after adding the item
-        uiCtrl.clearInputFields();
+        //1: Get input from the user
+        inputData = uiCtrl.getInputValues();
         
-        //5: Update the budget
-        updateBudget();
+        if(inputData.desc !== "" && !isNaN(inputData.value) && inputData.value > 0){
 
-    }
+            //2: Add item to the budget controller
+            newItem = budgetCtrl.addItem(inputData.type,inputData.desc,inputData.value);
+            //3: Add the item to the UI
+            uiCtrl.addListItem(newItem,inputData.type);
+
+            //4: Clear all the input fields after adding the item
+            uiCtrl.clearInputFields();
+            
+            //5: Update the budget
+            updateBudget();
+
+        }
 
     };
 
@@ -246,6 +247,15 @@ var appController = (function(budgetCtrl,uiCtrl){
         //A public function to execute all functions
         init: function(){
             //console.log("Application has started");
+
+            //Set the default budget to 0
+            uiCtrl.displayBudget({
+                budget: 0,
+                totalInc: 0,
+                totalExp: 0,
+                percentage: -1  
+            });
+            //Initialize event listeners
             setupEventListeners();
         }
     }
