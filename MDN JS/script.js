@@ -30,6 +30,36 @@ console.log(c);
 let c = 10;
 //Uncaught ReferenceError: can't access lexical declaration 'c' before initialization
 
+//**** NOTE *******
+//The undefined value behaves as false when used in a boolean context. Eg:
+var myArr = [];
+if(myArr[0] === undefined){
+    console.log("The value is undefined");
+}
+//undefined converts to NAN when used in a numeric context
+var num;
+console.log(2+num);
+//The null value in a variable evaluates to 0 in numeric context
+var null_num = null;
+console.log(null_num);
+
+//Variable scoping
+//Variable declared using var
+var a = 20;
+if(true){
+  var a = 10;
+}
+console.log(a);
+
+//Variable declared using let & const
+let a = 20;
+if(true){
+  let a = 10;
+}
+console.log(a);
+
+
+
 
 
 
