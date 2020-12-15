@@ -20,6 +20,21 @@ let new_obj = {
 let {bar} = new_obj;
 console.log(bar);
 
+//****************************** Global Variables ************************************/
+//Global variables are in fact properties of the global object. In web pages, the global object is window, so you can set and access global variables using the window.variable syntax.
+
+//***************************** Constants *****************************************/
+const PI = 3.1415;
+/*
+1: Constants can be declared with the const keyword. 
+2: Once declared, their value cannot be changed.
+3: They must be initialized, otherwise they throw errors stating missing = in declaration.
+4: They cannot be redeclared as a function or a variable with the same name( this can be done using var and let ).
+*/
+
+const myobj = {'Name':'Sahil'};
+myobj.Name = 'Ankitha';
+//However the properties assigned to an object as seen above are not protected and hence can be altered. The contents in an array also can be altered just like objects.
 
 
 //********************** Variable hoisting *************************
@@ -78,3 +93,25 @@ console.log(a);
 
 //In the above example, both let and var behave the same, since the variable "a" with the value 10 is local only to the function block.
 //** NOTE: Function blocks affect both var and let since the variable declared inside them is local and only remains as long as it is inside the function.
+
+//******************************* Function hoisting *************************************/
+//*** Function declaration ***
+bar();
+function bar(){
+  console.log("Hi this is bar");
+}
+//hello
+
+//*** Function expression ***
+bar();
+var bar = function(){
+  console.log("hello");
+}
+//TypeError: bar is not a function
+
+//In the above examples, function hoisting is only applicable on function declaration, i.e, the function can be called before it is declared. But the same is not applicable for function expression which throws an error stating that the function being called does not exist.
+
+
+
+
+
