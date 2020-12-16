@@ -111,7 +111,34 @@ var bar = function(){
 
 //In the above examples, function hoisting is only applicable on function declaration, i.e, the function can be called before it is declared. But the same is not applicable for function expression which throws an error stating that the function being called does not exist.
 
+/*********************** Data Structures and types ************************/
+/*
+Primitive data types in Javascript are data that is not an object and has no methods. 
 
+There are 7 primitive data types
+
+1: Boolean. true and false.
+2: null. A special keyword denoting a null value. (Because JavaScript is case-sensitive, null is not the same as Null, NULL, or any other variant.)
+3: undefined. A top-level property whose value is not defined.
+4: Number. An integer or floating point number. For example: 42 or 3.14159.
+5: BigInt. An integer with arbitrary precision. For example: 9007199254740992n.
+6: String. A sequence of characters that represent a text value. For example: "Howdy"
+7: Symbol (new in ECMAScript 2015). A data type whose instances are unique and immutable.
+
+All primitives are immutable which means that they cannot be altered. This should not be confused with variables assigned primitive values.
+*/
+var a = "hello";
+a.toUpperCase();
+console.log(a);
+//hello
+
+/* As observed in the example, the value returned is the original value despite having called a method on the variable. This is because unless primitives are stored, their values dont change */
+
+/************************************* Primitive Wrapper Objects *****************************************/ 
+/*------------- String Objects --------------*/
+/* These are used to represent and manipulate a sequence of characters. Strings can be created as primitives or using string contructor.*/
+const str1 = "hello";
+const str2 = new String("str obj")
 
 
 
