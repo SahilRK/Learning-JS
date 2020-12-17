@@ -135,7 +135,8 @@ console.log(a);
 /* As observed in the example, the value returned is the original value despite having called a method on the variable. This is because unless primitives are stored, their values dont change */
 
 /************************************* Primitive Wrapper Objects *****************************************/ 
-/*------------- String Objects --------------*/
+
+/************************************* String Objects ***********************************************/
 /* These are used to represent and manipulate a sequence of characters. Strings can be created as primitives or using string contructor.*/
 const str1 = "hello";
 const str2 = new String("str obj")
@@ -144,6 +145,19 @@ console.log(typeof str2);
 //string
 //object
 
-//Strings can be specified using single, double quotes or backtick character(this can be used in template literals for string interpolation Eg: "Hi ${name} says hi");
+//Strings can be specified using single, double quotes or backtick character(this can be used in template literals for string interpolation Eg: "Hi ${name} says hi").
 
+//------------ Accessing Strings -------------
+//They can be accessed in two ways.
+//1: charAt() method.
+str1.charAt(1);
+//2: By treating it as an array object
+str1[1];
+
+//------------ Comparing strings ------------
+//Strings can be compared using the >, <, ==, === operators
+//The difference between
+
+//** NOTE: String primitives and String Objects
+//Javascript automatically converts primitive strings to objects, so that it is possible to pass string methods to it.
 
