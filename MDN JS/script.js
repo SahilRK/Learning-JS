@@ -139,6 +139,11 @@ console.log(a);
 /* These are used to represent and manipulate a sequence of characters. Strings can be created as primitives or using string contructor.*/
 const str1 = "hello";
 const str2 = new String("str obj")
+console.log(typeof str1);
+console.log(typeof str2);
+//string
+//object
 
+//Strings can be specified using single, double quotes or backtick character(this can be used in template literals for string interpolation Eg: "Hi ${name} says hi");
 
 
