@@ -21,7 +21,10 @@ let {bar} = new_obj;
 console.log(bar);
 
 //****************************** Global Variables ************************************/
-//Global variables are in fact properties of the global object. In web pages, the global object is window, so you can set and access global variables using the window.variable syntax.
+/*
+1: Global variables are in fact properties of the global object. 
+2: In web pages, the global object is window, so you can set and access global variables using the window.variable syntax. 
+*/
 
 //***************************** Constants *****************************************/
 const PI = 3.1415;
@@ -136,8 +139,14 @@ console.log(a);
 
 /************************************* Primitive Wrapper Objects *****************************************/ 
 
+/********** new keyword ************/
+//new keyword is used to create Objects.
+
 /************************************* String Objects ***********************************************/
-/* These are used to represent and manipulate a sequence of characters. Strings can be created as primitives or using string contructor.*/
+/* 
+1: These are used to represent and manipulate a sequence of characters. 
+2: Strings can be created as primitives or using string contructor.
+*/
 const str1 = "hello";
 const str2 = new String("str obj")
 console.log(typeof str1);
@@ -155,9 +164,84 @@ str1.charAt(1);
 str1[1];
 
 //------------ Comparing strings ------------
-//Strings can be compared using the >, <, ==, === operators
-//The difference between
+/*
+1: Strings can be compared using the >, <, ==, === operators
+2: The difference between == and === is that == does a type conversion(coersion) where as === does a strict check without performing type conversion
+*/
 
 //** NOTE: String primitives and String Objects
-//Javascript automatically converts primitive strings to objects, so that it is possible to pass string methods to it.
+/*
+1: Javascript automatically converts primitive strings to objects, so that it is possible to pass string methods to it. 
+2: While evaluating strings, Javascript treats primitives and objects differently. Primitives are evaluated as source code where as string objects are returned as objects.
+Eg:
+*/
+let s1 = "2+2";
+let s2 = new String("2+2");
+console.log(eval(s1));
+console.log(eval(s2));
+
+//To convert a String object to a primitive, we can use the valueOf() method
+console.log(eval(s2.valueOf()));
+
+//------------- String Object ---------------
+
+/*
+1: The String constructor is used to create a new String object. 
+2: When called instead as a function, it performs type conversion to a primitive string, which is usually more useful.
+
+new String(thing) -- This syntax creates a string object
+String(thing) -- This is used for type conversion to a primitive string
+*/
+
+//***NOTE: String(value) syntax can be used as a more reliable syntax for type conversion than the toString() method.
+//For reference on Strings https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+
+/********************************** Number Objects ***********************************/
+/* 
+1: Number is a primitive wrapper object used to represent and manipulate numbers like 37 or -9.25.
+2: The Number constructor contains constants and methods for working with numbers. 
+3: Values of other types can be converted to numbers using the Number() function.
+4: All numbers in Javascript are double precision 64bit binary values (double)
+5: A number literal like 37 in JavaScript code is a floating-point value, not an integer. There is no separate integer type in common everyday use.
+6: Number(value) can be used for type conversion of a different datatype like string into a primitive number type. If it cannot be converted, then NaN(Not a number is returned).
+*/
+var num1 = "123";
+console.log(Number(num1));
+//"123"
+
+/********************************* Big Int Object ******************************************/
+//BigInt is a built-in object that provides a way to represent whole numbers larger than (2(power 53) - 1) = 9007199254740991, which is the largest number JavaScript can reliably represent with the Number primitive and represented by the Number.MAX_SAFE_INTEGER constant. BigInt can be used for arbitrarily large integers.
+//A BigInt is created by appending n to the end of an integer literal — 10n — or by calling the function BigInt().
+const numb = BigInt(20);
+console.log(numb);
+
+//BigInt cannot be used with methods in the Math object and cannot be mixed with numbers in operations and must be coerced to the same type. Eg:
+const numBig = BigInt(20);
+const numInt = 20;
+const sumNum = numBig+numInt;
+//Uncaught TypeError: can't convert BigInt to number
+//** To get rid of this error, the BigInt const has to be coerced into an Integer, but this has to be done carefully for large numbers and the number should not cross 9007199254740991, since this will result in an error.
+
+/******************************* Boolean Object *****************************************/
+/*
+1: To create a boolean object, the value passed as the first parameter is converted to a boolean value, if necessary. 
+2: If the value is omitted or is 0, -0, null, false, NaN, undefined, or the empty string (""), the object has an initial value of false. 
+3: All other values, including any object, an empty array ([]), or the string "false", create an object with an initial value of true.Eg:
+*/
+var boolCheck = new Boolean(false);
+if(boolCheck){
+  console.log("The value of boolCheck is "+boolCheck);
+}
+//4: This behaviour does not apply to variables assigned the boolean primitive. Eg
+var boolCheck = false;
+if(boolCheck){
+  console.log("The value of boolCheck is "+boolCheck);
+  //This code will not be executed.
+}
+//Do not use a Boolean object to convert a non-boolean value to a boolean value. To perform this task, instead, use Boolean as a function, or a double NOT operator:
+var x = Boolean(expression);     // use this...
+var x = !!(expression);          // ...or this
+var x = new Boolean(expression); // don't use this!
+
+
 
