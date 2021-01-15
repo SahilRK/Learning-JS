@@ -4,14 +4,14 @@
 
 /* 
 ---- var ----
-Declares a variable, optionally initializing it to a value.
+Declares a variable, optionally initializing it to a value. The value is undefined
 ---- let ----
-Declares a block-scoped, local variable, optionally initializing it to a value.
+Declares a block-scoped, local variable, optionally initializing it to a value. The value is undefined
 ---- const ----
-Declares a block-scoped, read-only named constant.
+Declares a block-scoped, read-only named constant. A value has to be set otherwise an error is thrown.
 */
 
-//Variables can be declared by unpacking Object Literals 
+//Variables can be declared by unpacking Object Literals. 
 let new_obj = {
     foo: 'Hello',
     bar: 'Hi'
@@ -23,7 +23,7 @@ console.log(bar);
 //****************************** Global Variables ************************************/
 /*
 1: Global variables are in fact properties of the global object. 
-2: In web pages, the global object is window, so you can set and access global variables using the window.variable syntax. 
+2: In web pages, the global object is window, so you can set and access global variables using the window.<variable name> syntax. 
 */
 
 //***************************** Constants *****************************************/
@@ -39,12 +39,29 @@ const myobj = {'Name':'Sahil'};
 myobj.Name = 'Ankitha';
 //However the properties assigned to an object as seen above are not protected and hence can be altered. The contents in an array also can be altered just like objects.
 
+/************************************************ HOISTING *******************************************************/
 
-//********************** Variable hoisting *************************
+/**NOTE: Hoisting is a JavaScript mechanism where variables and function declarations are moved to the top of their scope before code execution. 
+Inevitably, this means that no matter where functions and variables are declared, they are moved to the top of their scope regardless of whether their scope is global or local.
+link to an article on hoisting https://www.digitalocean.com/community/tutorials/understanding-hoisting-in-javascript
+*/
+
+/* NOTE:
+It’s important to keep a few things in mind when declaring JavaScript functions and variables.
+
+1: Variable assignment takes precedence over function declaration
+2: Function declarations take precedence over variable declarations
+*/
+
+/* NOTE: Values in variables are stored in their individual memory registers and are called by value. So even if one variable is assigned to another Eg: var a = 5; var b = a; the variable references to its location in the memory. Hence changing the value of one variable (eg a = 6) does not affect var b. */
+
+//********************** Variable hoisting *************************/
 
 //Though var and let can be declared without a value assignment, they differ when it comes to variable hoisting.
+//Because variable declarations (and declarations in general) are processed before any code is executed, declaring a variable anywhere in the code is equivalent to declaring it at the top. This also means that a variable can appear to be used before it's declared. This behavior is called "hoisting", as it appears that the variable declaration is moved to the top of the function or global code
 //For eg: variables using var can be defined after they are called, where as in let, variables have to be defined before being called since they throw an uncaught reference error.
-console.log(b);
+
+console.log(b); 
 var b = 20;
 
 console.log(c);
@@ -60,13 +77,19 @@ if(myArr[0] === undefined){
 //undefined converts to NAN when used in a numeric context
 var num;
 console.log(2+num);
+//NAN
+
 //The null value in a variable evaluates to 0 in numeric context
 var null_num = null;
 console.log(null_num);
+//0
 
 
 
 //******************** Variable scoping **************************
+
+/****** There are two ways in which scope works. *************/
+//1: If a variable is redefined using the built in keyword let or var inside the block(if condition), then the variable declared using var changes to the new value, since it is not block scoped. But the variable declared using let changes only as long as the scope is inside the block and the value returns back to original as soon as the program exits the scope. This is because let creates a new variable inside the if block
 
 //Variable declared using var
 var a = 20;
@@ -84,6 +107,23 @@ if(true){
 console.log(a);
 //Output is 20
 
+//2: But if the variable is only reassigned, then, the output is the same in both cases since the variable is being reassigned
+//Variable declared using var
+var a = 20;
+if(true){
+  a = 10;
+}
+console.log(a);
+//Output is 10
+
+//Variable declared using let & const
+let a = 20;
+if(true){
+  a = 10;
+}
+console.log(a);
+//Output is 10
+
 //In the above example we can notice the difference between declaring variables using let and var. Since let is a block scoped variable, the variable is redeclared inside the block as a new variable and the value assigned to it (value is 10) remains only as long as it is in the scope. It then returns back to the original value(20) as soon as it exits the block. Since var is function scoped, it is not affected by block statements and remains to be a global variable as long as it is outside a function block.
 
 var a = 20;
@@ -96,6 +136,14 @@ console.log(a);
 
 //In the above example, both let and var behave the same, since the variable "a" with the value 10 is local only to the function block.
 //** NOTE: Function blocks affect both var and let since the variable declared inside them is local and only remains as long as it is inside the function.
+
+/********************************** VAR vs LET *****************************
+1) var is hoisted( can be declared after it has been initialised ), where as let is not hoisted
+2) Using let makes code redability and maintenance easier since it forces you to declare the variable and then use it.
+3) Variables declared with let cannot be declared again, which makes more sense since it avoids confusion of multiple declarations.
+4) Let fixes all such issues of VAR which were confusing to readers. Hence use let in place of var.
+*/
+
 
 //******************************* Function hoisting *************************************/
 //*** Function declaration ***
@@ -242,6 +290,30 @@ if(boolCheck){
 var x = Boolean(expression);     // use this...
 var x = !!(expression);          // ...or this
 var x = new Boolean(expression); // don't use this!
+
+/***************************************** Symbol data type and Object ******************************************/
+//1: In Javascript, symbols are a unique data type which can be created using the function Symbol.
+let sym1 = Symbol("sym");
+//2: Every symbol created, has a unique value. Eg
+let sym1 = Symbol("sym");
+let sym2 = Symbol("sym");
+console.log(sym1 === sym2);
+//3: No two symbols can be equal even if they are assigned in a similar way, since each symbol produces a unique value.
+//4: Symbols can hence be used as object properties.
+//5: Symbols cannot be implicitly coerced as they dont auto convert
+alert(sym1)//TypeError: Cannot covert a Symbol value to String
+//6: Converting it explicitly like this works
+alert(sym1.toString());//Symbol(sym)
+//----------- OR ---------------
+alert(sym1.description);
+//7: There is a global symbol registry holding all available symbols. The methods that access the registry are Symbol.for() and Symbol.keyFor(); these mediate between the global symbol table (or "registry") and the run-time environment.
+//8: The method Symbol.for(tokenString) returns a symbol value from the registry, and Symbol.keyFor(symbolValue) returns a token string from the registry;
+
+//9: Symbols do not support creation of an object wrapper around them (new Symbol()) due to it being an incomplete constructor;
+
+/********************************************************** Literals **************************************************************/
+//A literal in javascript is
+
 
 
 

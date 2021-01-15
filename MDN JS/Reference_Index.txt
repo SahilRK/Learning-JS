@@ -1,0 +1,11 @@
+This is a reference guide for topics in Javascript and Web Designing 
+1) Hoisting: https://www.digitalocean.com/community/tutorials/understanding-hoisting-in-javascript
+2) Variables: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Variables
+3) Call by: https://www.geeksforgeeks.org/call-by-value-vs-call-by-reference-in-javascript/
+4) List of reserved keywords: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#keywords
+
+
+Material Design:
+https://material.io/components
+
+Progressive Web Apps:
