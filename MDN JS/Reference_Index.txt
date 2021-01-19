@@ -3,6 +3,8 @@ This is a reference guide for topics in Javascript and Web Designing
 2) Variables: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Variables
 3) Call by: https://www.geeksforgeeks.org/call-by-value-vs-call-by-reference-in-javascript/
 4) List of reserved keywords: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#keywords
+5) List of Built-in Objects in JS: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
+
 
 
 Material Design:

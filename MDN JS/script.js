@@ -312,7 +312,18 @@ alert(sym1.description);
 //9: Symbols do not support creation of an object wrapper around them (new Symbol()) due to it being an incomplete constructor;
 
 /********************************************************** Literals **************************************************************/
-//A literal in javascript is
+/* A literal in javascript represents values.
+1: Array literals
+2: Boolean literals
+3: Floating-point literals
+4: Numeric literals
+5: Object literals
+6: RegExp literals
+7: String literals
+*/
+/***************************************** Array Literals ******************************************/
+//An array literal is a list of zero or more expressions, each of which represents an array element, enclosed in square brackets ([]). When an array is created, it is initialized with the specified values as its elements and the length of the array is set to the number of elements.
+
 
 
 
