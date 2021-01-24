@@ -322,7 +322,119 @@ alert(sym1.description);
 7: String literals
 */
 /***************************************** Array Literals ******************************************/
-//An array literal is a list of zero or more expressions, each of which represents an array element, enclosed in square brackets ([]). When an array is created, it is initialized with the specified values as its elements and the length of the array is set to the number of elements.
+//An array literal is a list of zero or more expressions, each of which represents an array element, enclosed in square brackets ([]). When an array is created, it is initialized with the specified values as its elements and the length of the array is set to the number of elements. Eg:
+let languages = ['js','python','ruby','java'];
+
+//If you put two commas in a row, the array fills in the value undefined for the unspecified elements.Eg:
+let colours = ['red',,'blue']
+//colours[0] is 'red'
+//colours[1] is undefined
+//colours[2] is 'blue'
+
+//If you include a trailing comma at the end of the list of elements, the comma is ignored. Note : Trailing commas can create errors in older browser versions and it is a best practice to remove them. Where as leading commas are included as elements and are undefined.
+let myList = [,'home', , 'school', ];
+
+/***************************************** Boolean Literals ******************************************/
+//The Boolean type has two literal values: true and false.
+
+/***************************************** Numeric Literals ******************************************/
+/*
+Number and BigInt types can be written in decimal (base 10), hexadecimal (base 16), octal (base 8) and binary (base 2).
+
+A decimal numeric literal is a sequence of digits without a leading 0 (zero).
+A leading 0 (zero) on a numeric literal, or a leading 0o (or 0O) indicates it is in octal. Octal numerics can include only the digits 0–7.
+A leading 0x (or 0X) indicates a hexadecimal numeric type. Hexadecimal numerics can include digits (0–9) and the letters a–f and A–F. (The case of a character does not change its value. Therefore: 0xa = 0xA = 10 and 0xf = 0xF = 15.)
+A leading 0b (or 0B) indicates a binary numeric literal. Binary numerics can only include the digits 0 and 1.
+
+0, 117, -345, 123456789123456789n             (decimal, base 10)
+015, 0001, -0o77, 0o777777777777n             (octal, base 8)
+0x1123, 0x00111, -0xF1A7, 0x123456789ABCDEFn  (hexadecimal, "hex" or base 16)
+0b11, 0b0011, -0b11, 0b11101001010101010101n  (binary, base 2)
+*/
+
+/***************************************** Floating Point Literals *****************************************
+A floating-point literal can have the following parts:
+
+A decimal integer which can be signed (preceded by "+" or "-"),
+A decimal point ("."),
+A fraction (another decimal number),
+An exponent. 
+*/
+
+/***************************************** Floating Point Literals *****************************************
+A floating-point literal can have the following parts:
+
+A decimal integer which can be signed (preceded by "+" or "-"),
+A decimal point ("."),
+A fraction (another decimal number),
+An exponent. 
+
+Eg:
+3.1415926
+-.123456789
+-3.1E+12
+.1e-23
+*/
+
+/**************************************** Object Literal *********************************************
+An object literal is a list of zero or more pairs of property names and associated values of an object, enclosed in curly braces ({}).
+
+NOTE: Do not use an object literal at the beginning of a statement! This will lead to an error (or not behave as you expect), because the { will be interpreted as the beginning of a block.
+Eg: 
+ */
+var car = { myCar: 'Saturn', getCar: carTypes('Honda'), special: sales };
+
+//The first element of the car object defines a property, myCar, and assigns to it a new string, "Saturn"; the second element, the getCar property, is immediately assigned the result of invoking the function (carTypes("Honda")); the third element, the special property, uses an existing variable (sales).
+
+//Additionally, you can use a numeric or string literal for the name of a property or nest an object inside another. The following example uses these options.
+
+var car = { manyCars: {a: 'Saab', b: 'Jeep'}, 7: 'Mazda' };
+
+console.log(car.manyCars.b); // Jeep
+console.log(car[7]); // Mazda
+
+/* Object property names can be any string, including the empty string. If the property name would not be a valid JavaScript identifier or number, it must be enclosed in quotes.
+
+Property names that are not valid identifiers cannot be accessed as a dot (.) property, but can be accessed and set with the array-like notation("[]"). */
+
+var unusualPropertyNames = {
+  '': 'An empty string',
+  '!': 'Bang!'
+}
+console.log(unusualPropertyNames.'');   // SyntaxError: Unexpected string
+console.log(unusualPropertyNames['']);  // An empty string
+console.log(unusualPropertyNames.!);    // SyntaxError: Unexpected token !
+console.log(unusualPropertyNames['!']); // Bang!
+
+/**************************************** Regex Literal *********************************************/
+//A regex literal (which is defined in detail later) is a pattern enclosed between slashes. The following is an example of a regex literal.
+
+let regtext = /ab+c/;
+
+/**************************************** String Literal *********************************************/
+//1: A string literal is zero or more characters enclosed in double (") or single (') quotation marks. A string must be delimited by quotation marks of the same type (that is, either both single quotation marks, or both double quotation marks). In ES2015, JS came up with the `(backtick) concept which are used for template literals
+//2: JavaScript automatically converts the string literal to a temporary String object, calls the method, then discards the temporary String object.
+//3: Template literals are used for constructing strings (string interpolation). Eg:
+let name = 'Sahil';
+let age = 28;
+console.log(`${name} is ${age} years old`);
+//Template literals can also be used for multiline strings without having to use a special character(eg: \n) to write multi line strings.
+let poem =
+`Roses are red,
+Violets are blue.
+Sugar is sweet,
+and so is foo.`
+
+
+/**************************************** Important Standard Objects *********************************************/
+
+
+
+
+
+
+
+
 
 
 
