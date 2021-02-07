@@ -415,9 +415,9 @@ let regtext = /ab+c/;
 //1: A string literal is zero or more characters enclosed in double (") or single (') quotation marks. A string must be delimited by quotation marks of the same type (that is, either both single quotation marks, or both double quotation marks). In ES2015, JS came up with the `(backtick) concept which are used for template literals
 //2: JavaScript automatically converts the string literal to a temporary String object, calls the method, then discards the temporary String object.
 //3: Template literals are used for constructing strings (string interpolation). Eg:
-let name = 'Sahil';
+let firstname = 'Sahil';
 let age = 28;
-console.log(`${name} is ${age} years old`);
+console.log(`${firstname} is ${age} years old`);
 //Template literals can also be used for multiline strings without having to use a special character(eg: \n) to write multi line strings.
 let poem =
 `Roses are red,
@@ -428,15 +428,64 @@ and so is foo.`
 
 /**************************************** Important Standard Objects *********************************************/
 
+/**************************************** Arrays *********************************************/
+//The JavaScript Array class is a global object that is used in the construction of arrays; which are high-level, list-like objects
+//Neither the length of a JavaScript array nor the types of its elements are fixed
+//Setting or accessing via non-integers using bracket notation (or dot notation) will not set or retrieve an element from the array list itself, but will set or access a variable associated with that array's object property collection.Eg:
+let arr = [1,2,3]
+arr["hi"] = "hello"
+//OR arr.hi = "hello"
+console.log(arr)
 
+//Output
+/*
+0: 1
+1: 2
+2: 3
+hi: "hello"
+length: 3
+<prototype>: Array []
+*/
 
+/******** Create an Array *******/
+//Using the array constructor
+let fruits = new Array('Orange','Apple','Banana');
+//OR
+//As a literal
+let fruits = ['Orange','Apple','Banana'];
+console.log(fruits);
 
+//Accessing the array
+let first_fruit = fruits[0];
+let last_fruit = fruits[fruits.length - 1];
 
+//Adding an item to the array
+let fruits = new Array('Apple','Orange','Banana');
+fruits.push('Papaya');
+console.log(fruits);
 
+//Removing an element from the end of the array. NOTE: The pop option does not accept any inputs.
+let fruits = new Array('Apple','Orange','Banana');
+fruits.pop();
+console.log(fruits);
 
+//Removing an element from the start of an array. NOTE: The shift option does not accept any inputs.
+let fruits = new Array('Apple','Orange','Banana');
+fruits.shift();
+console.log(fruits);
 
+//Add an item to the start of an array
+let fruits = new Array('Apple','Orange','Banana');
+fruits.unshift('Papaya');
+console.log(fruits);
 
+let fruits = new Array('Apple','Orange','Banana');
+fruits[1] = 'Papaya';
+console.log(fruits);
+//NOTE: Performing the following replaces an item if there is already an item in the position. Otherwise it adds an item in that position.
 
-
-
+//Find the index of an item
+let fruits = new Array('Apple','Orange','Banana');
+let fruit_idx = fruits.indexOf("Orange");
+console.log(`Index of Orange is ${fruit_idx}`);
 
