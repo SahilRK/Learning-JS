@@ -4,6 +4,8 @@ This is a reference guide for topics in Javascript and Web Designing
 3) Call by: https://www.geeksforgeeks.org/call-by-value-vs-call-by-reference-in-javascript/
 4) List of reserved keywords: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#keywords
 5) List of Built-in Objects in JS: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
+6) Deno JS: https://deno.land/
+7) ELK Stack: https://www.elastic.co/what-is/elk-stack
 
 
 
