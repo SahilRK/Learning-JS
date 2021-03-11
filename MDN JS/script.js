@@ -26,7 +26,7 @@ console.log(bar);
 2: In web pages, the global object is window, so you can set and access global variables using the window.<variable name> syntax. 
 */
 
-//***************************** Constants *****************************************/
+//****************************** Constants *****************************************/
 const PI = 3.1415;
 /*
 1: Constants can be declared with the const keyword. 
@@ -489,3 +489,11 @@ let fruits = new Array('Apple','Orange','Banana');
 let fruit_idx = fruits.indexOf("Orange");
 console.log(`Index of Orange is ${fruit_idx}`);
 
+//Array elements are object properties, but trying to access an element o an array as follows throws a syntax error because the property name is not valid.
+console.log(fruits.0) // a syntax error
+//There is nothing special about this. Javascript properties that begin with a digit must be accessed using a bracket notation.
+
+//To increase the length of the array
+fruits.length = 20;
+
+//
