@@ -68,4 +68,5 @@ console.log(fruits.0) // a syntax error
 //To increase the length of the array
 fruits.length = 20;
 
-//
+//Creating an array from an array like or iteratable object using Array.from() static method
+console.log(Array.from('foo'));
