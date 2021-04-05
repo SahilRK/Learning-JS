@@ -27,19 +27,24 @@ let fruits = new Array('Orange','Apple','Banana');
 let fruits = ['Orange','Apple','Banana'];
 console.log(fruits);
 
+//*** ACCESS ***//
 //Accessing the array
 let first_fruit = fruits[0];
 let last_fruit = fruits[fruits.length - 1];
 
+//*** PUSH ***//
 //Adding an item to the array
 let fruits = new Array('Apple','Orange','Banana');
 fruits.push('Papaya');
 console.log(fruits);
 
+
+//*** POP ***//
 //Removing an element from the end of the array. NOTE: The pop option does not accept any inputs.
 let fruits = new Array('Apple','Orange','Banana');
 fruits.pop();
 console.log(fruits);
+
 
 //Removing an element from the start of an array. NOTE: The shift option does not accept any inputs.
 let fruits = new Array('Apple','Orange','Banana');
@@ -138,8 +143,26 @@ let fruits = [
 console.log(fruits.find(fruit => fruit.name.includes('ap')));
 //Object { name: "apple" }
 
+//The for each method executes the callback function on each element
+const num_array = [1,2,null,4,5];
+let mod_num_array = [];
+num_array.forEach(e=>{
+  console.log(e*2)
+  mod_num_array.push(e*2);
+})
+console.log(mod_num_array);
 
-
+//** NOTE: There is no way to stop or break a forEach unless the loop throws an exception
+//** NOTE: forEach does not wait for promises. Kindly make sure you are aware of the implications while using promises(or async functions) as forEach callback.
+//It skips any element that is uninitialized. Eg:
+const num_arr = [1,2,,5,,7];
+let numCallbackRuns = 0
+num_arr.forEach(e=>{
+    console.log(e)
+    ++numCallbackRuns;
+})
+console.log(numCallbackRuns)
+//As seen in the console log above, the returned value is 4, which indicates that the blank or uninitialized values were skipped.
 
 
 
