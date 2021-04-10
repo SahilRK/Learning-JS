@@ -143,7 +143,11 @@ let fruits = [
 console.log(fruits.find(fruit => fruit.name.includes('ap')));
 //Object { name: "apple" }
 
+/** FOR EACH **/
 //The for each method executes the callback function on each element
+//forEach() executes the callback function once for each array element; unlike map() or reduce() it always returns the value undefined and is not chainable. The typical use case is to execute side effects at the end of a chain.
+//forEach() does not mutate the array on which it is called
+
 const num_array = [1,2,null,4,5];
 let mod_num_array = [];
 num_array.forEach(e=>{
@@ -163,8 +167,46 @@ num_arr.forEach(e=>{
 })
 console.log(numCallbackRuns)
 //As seen in the console log above, the returned value is 4, which indicates that the blank or uninitialized values were skipped.
+//Using a forEach loop, the array can be modified as well
+let num_arr = [1,3,5,8,12,9,15];
+num_arr.forEach((num,idx)=>{
+  if(num%2 == 0){
+    num_arr.splice(idx,1);
+  }
+});
+console.log(num_arr);
+//Array(6) [ 1, 3, 5, 12, 9, 15 ] - As seen in the following array result, when the element reaches 8, it removes it from the array, and shifts the whole array to one position up(to the lower index value). Hence the element after 8(which is 12) gets skipped since it moves to the position of 8 which has already been iterated.
 
+//Flattening an array using for each
+function flattenArr(arr){
+  let result = [];
+  arr.forEach(ele=>{
+    if(Array.isArray(ele)){
+      result.push(...flattenArr(i))
+    }
+    else{
+      result.push(ele);
+    }
+  });
+  return result
+}
 
+flattenArr(1,2,3,[4,5,[6,7,[8,9],10],11],12);
 
+/** INCLUDES **/
+//If the fromIndex parameter(arr.includes(valueToFind,fromIndex)) is greater than or equal to the array length, then the array is not searched.
+let arr = ['a', 'b', 'c']
 
+arr.includes('c', 3)    // false
+arr.includes('c', 100)  // false
 
+/* MAP */
+/* map calls a provided callback function once for each element in an array, in order, and constructs a new array from the results. callback is invoked only for indexes of the array which have assigned values (including undefined).
+
+It is not called for missing elements of the array; that is:
+indexes that have never been set;
+indexes which have been deleted. */
+const numArr = [1,2,3,4,5];
+const numArrProd = numArr.map(e=>e*2);
+
+//Since map() returns back an array, using it when the returned array is not required will be an anti pattern.
