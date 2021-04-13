@@ -352,14 +352,6 @@ A leading 0b (or 0B) indicates a binary numeric literal. Binary numerics can onl
 0b11, 0b0011, -0b11, 0b11101001010101010101n  (binary, base 2)
 */
 
-/***************************************** Floating Point Literals *****************************************
-A floating-point literal can have the following parts:
-
-A decimal integer which can be signed (preceded by "+" or "-"),
-A decimal point ("."),
-A fraction (another decimal number),
-An exponent. 
-*/
 
 /***************************************** Floating Point Literals *****************************************
 A floating-point literal can have the following parts:

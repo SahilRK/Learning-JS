@@ -210,3 +210,30 @@ const numArr = [1,2,3,4,5];
 const numArrProd = numArr.map(e=>e*2);
 
 //Since map() returns back an array, using it when the returned array is not required will be an anti pattern.
+
+/* REDUCE */
+//The reduce method executes a reducer function that is provided for each element and returns a single output value
+const numArr = [1,2,3,4,5];
+const reducer = (accu,currVal) => accu+currVal;
+
+console.log(numArr.reduce(reducer,5))
+
+//the first time that the callback is called, if the initial value is present, for eg in the array above, then the accumulator takes the value of the initial value and the currentValue is equal to the first value in the array. If the initalValue is not mentioned then the accumulator takes the first value in the array and the currentValue takes the second value in the array.
+
+//NOTE: If the array is empty and no initialValue is provided, then a TypeError is thrown. It is always safer to provide an initial value, since even if the array turns out to be empty, the initialValue is returned back and the callback is not called.
+
+/* SLICE */
+//The slice() method returns a shallow copy of a portion of an array into a new array object selected from start to end (end not included) where start and end represent the index of items in that array. The original array will not be modified.
+
+const animals = ['lion','tiger','dog','cat','elephant'];
+console.log(animals.slice(2,4));
+//Array [ "dog", "cat" ]
+
+/********************************************* OBJECTS ****************************************************/
+
+//The Object class represents one of JavaScript's data types. It is used to store various keyed collections and more complex entities. 
+
+
+
+
+
