@@ -231,9 +231,28 @@ console.log(animals.slice(2,4));
 
 /********************************************* OBJECTS ****************************************************/
 
-//The Object class represents one of JavaScript's data types. It is used to store various keyed collections and more complex entities. 
+//The Object class represents one of JavaScript's data types. It is used to store various keyed collections and more complex entities. Objects can be created using the Object() constructor or as a literal using the bracket notation
 
+/*** Constructor ***/
+//1: The Object constructor creates an object wrapper for the given value.
+//2: If the value is undefined or null, it creates an empty object. Eg
+let testObj = new Object();
+console.log(testObj);
+//Object {}
 
+let testObj = new Object('hello');
+console.log(testObj);
+//String{"hello"}
 
+ /* Object.assign() */
+ //The Object.assign() method copies all enumerable own properties from one or more source objects to a target object. It returns the target object
+ let target = {a:1,b:2,c:{d:3}};
+ let source = {a:2,b:21,c:{d:33}};
+ let source1 = {a:2,b:21,c:{d:34}};
+ Object.assign(target,source,source1);
+ console.log(target)
+
+ //Properties in the target object are overwritten by properties in the sources if they have the same key. Later sources' properties overwrite earlier ones.Eg the source1 property overwrites source properties.
+//The assign method only copies enumerable properties and own properties from a source object to a target object.
 
 
