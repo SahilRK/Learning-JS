@@ -107,6 +107,16 @@ if(true){
 console.log(a);
 //Output is 20
 
+var a = 20;
+function one(){
+  var a = 10;
+}
+one();
+console.log(a);
+//20
+
+//In the above example we can notice the difference between declaring variables using let and var. Since let is a block scoped variable, the variable is redeclared inside the block as a new variable and the value assigned to it (value is 10) remains only as long as it is in the scope. It then returns back to the original value(20) as soon as it exits the block. Since var is function scoped, it is not affected by block statements and remains to be a global variable as long as it is outside a function block.
+
 //2: But if the variable is only reassigned, then, the output is the same in both cases since the variable is being reassigned
 //Variable declared using var
 var a = 20;
@@ -123,16 +133,6 @@ if(true){
 }
 console.log(a);
 //Output is 10
-
-//In the above example we can notice the difference between declaring variables using let and var. Since let is a block scoped variable, the variable is redeclared inside the block as a new variable and the value assigned to it (value is 10) remains only as long as it is in the scope. It then returns back to the original value(20) as soon as it exits the block. Since var is function scoped, it is not affected by block statements and remains to be a global variable as long as it is outside a function block.
-
-var a = 20;
-function one(){
-  var a = 10;
-}
-one();
-console.log(a);
-//20
 
 //In the above example, both let and var behave the same, since the variable "a" with the value 10 is local only to the function block.
 //** NOTE: Function blocks affect both var and let since the variable declared inside them is local and only remains as long as it is inside the function.
