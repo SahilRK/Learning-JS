@@ -242,17 +242,63 @@ console.log(testObj);
 
 let testObj = new Object('hello');
 console.log(testObj);
-//String{"hello"}
+/* String
+​0: "h"
+​1: "e"
+​2: "l"
+​3: "l"
+​4: "o" */
 
- /* Object.assign() */
- //The Object.assign() method copies all enumerable own properties from one or more source objects to a target object. It returns the target object
+/* Object.assign() */
+//The Object.assign() method copies all enumerable own properties from one or more source objects to a target object. It returns the target object
  let target = {a:1,b:2,c:{d:3}};
  let source = {a:2,b:21,c:{d:33}};
  let source1 = {a:2,b:21,c:{d:34}};
  Object.assign(target,source,source1);
  console.log(target)
 
- //Properties in the target object are overwritten by properties in the sources if they have the same key. Later sources' properties overwrite earlier ones.Eg the source1 property overwrites source properties.
+//Properties in the target object are overwritten by properties in the sources if they have the same key. Later sources' properties overwrite earlier ones.Eg the source1 property overwrites source properties.
 //The assign method only copies enumerable properties and own properties from a source object to a target object.
+//If the source value is a reference to an object, it only copies the reference value. For Eg:
+source = {a:1,b:{c:2,d:3}}
+target = {a:2}
+Object.assign(target,source);
+source.a = 2;
+console.log(target)
+console.log(source)
+//Target: Object { a: 1, b: {c:2,d:3} }
+//Source: Object { a: 2, b: {c:2,d:3} }
+
+//Properties on the prototype chain and non-enumerable properties cannot be copied
+const obj = Object.create({ foo: 1 }, { // foo is on obj's prototype chain.
+  bar: {
+    value: 2  // bar is a non-enumerable property.
+  },
+  baz: {
+    value: 3,
+    enumerable: true  // baz is an own enumerable property.
+  }
+});
+
+const copy = Object.assign({}, obj);
+console.log(copy); // { baz: 3 }
+
+/* Object.create() */
+//The Object.create() method creates a new object, using an existing object as the prototype of the newly created object
+const person = {
+  printIntro: function(){
+    console.log(`My name is ${this.name}. I am a ${this.job}.`)
+  }
+}
+
+const me = Object.create(person);
+me.name = 'Sahil';
+me.job = 'Team Leader';
+
+me.printIntro();
+//My name is Sahil. I am a Team Leader.
+
+
+
 
 
