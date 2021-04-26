@@ -233,7 +233,7 @@ console.log(animals.slice(2,4));
 
 //The Object class represents one of JavaScript's data types. It is used to store various keyed collections and more complex entities. Objects can be created using the Object() constructor or as a literal using the bracket notation
 
-/*** Constructor ***/
+/************************ Constructor *************************/
 //1: The Object constructor creates an object wrapper for the given value.
 //2: If the value is undefined or null, it creates an empty object. Eg
 let testObj = new Object();
@@ -249,7 +249,7 @@ console.log(testObj);
 ​3: "l"
 ​4: "o" */
 
-/* Object.assign() */
+/*********************** Object.assign() **********************/
 //The Object.assign() method copies all enumerable own properties from one or more source objects to a target object. It returns the target object
  let target = {a:1,b:2,c:{d:3}};
  let source = {a:2,b:21,c:{d:33}};
@@ -283,7 +283,7 @@ const obj = Object.create({ foo: 1 }, { // foo is on obj's prototype chain.
 const copy = Object.assign({}, obj);
 console.log(copy); // { baz: 3 }
 
-/* Object.create() */
+/********************** Object.create() ***************************/
 //The Object.create() method creates a new object, using an existing object as the prototype of the newly created object
 const person = {
   printIntro: function(){
@@ -298,6 +298,53 @@ me.job = 'Team Leader';
 me.printIntro();
 //My name is Sahil. I am a Team Leader.
 
+/*********************** Object.defineProperty ******************/
+//This method allows a precise addition to or modification of a property on an object. Normal property addition through assignment creates properties which show up during property enumeration (for...in loop or Object.keys method), whose values may be changed, and which may be deleted. This method allows these extra details to be changed from their defaults. By default, values added using Object.defineProperty() are immutable and not enumerable.
+let person = {};
+Object.defineProperty(person,'name',{
+  enumerable: false,
+  configurable: false,
+  writable: false,
+  value:'Sahil'
+});
+
+person.name = 'Sameer';
+console.log(person);
+//Object{name:"Sahil"}
+
+//Modifying a property. Writable,Enumerable and Configurable are false by default.
+//1: When an attribute is writable, the value can be reassigned.
+let person = {};
+Object.defineProperty(person,'age',{
+  writable:true,
+  value:12
+})
+person.age = 'Sahil';
+console.log(person);
+//Object{age:"Sahil"}
+
+//2:When it is enumerable, the property can be picked by the target object using Object.assign or by the spread operator.
+let person = {};
+Object.defineProperty(person,'age',{
+  writable:true,
+  enumerable:false,
+  value:12
+})
+person.age = 'Sahil';
+console.log(person);
+
+let person2 = Object.assign({},person);
+console.log(person2);
+//{} - Since person object has enumerable property set to false for age property, the value cannot be copied to person2 object.
+
+//3: The configurable attribute controls at the same time whether the property can be deleted from the object and whether its attributes (other than value and writable) can be changed.
+var o = {};
+Object.defineProperty(o, 'a', {
+  get() { return 1; },
+  configurable: false
+});
+delete o.a
+//false -- returns false because the object property is not configurable and hence cannot be 
 
 
 
