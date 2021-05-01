@@ -344,8 +344,100 @@ Object.defineProperty(o, 'a', {
   configurable: false
 });
 delete o.a
-//false -- returns false because the object property is not configurable and hence cannot be 
+//false -- returns false because the object property is not configurable and hence cannot be deleted.
+
+/******************  Object.properties ******************/ 
+// Lets you define more than one property on an object. It is similar to Object.property, but helps define more properties.
+
+let persons = {};
+Object.defineProperties(persons,{
+  'name':{
+    value: 'Sahil',
+    writable: true
+  },
+  'age':{
+    value: 29,
+    writable: true
+  }
+})
+
+/************* Object.entries() ****************/
+//This method returns an array of a given object's enumerable [key,value] pairs.
+
+const person_details = {
+  name: 'Sahil',
+  age: 28
+}
+//Iterating the object.enteries
+for(const[key,value] of Object.entries(person_details)){
+  console.log(`My ${key} is ${value}`);
+}
+console.log(Object.entries(person_details));
+//Array [ (2) […], (2) […] ]
+​//0: Array [ "name", "Sahil" ]
+//1: Array [ "age", 28 ]
+
+/********************** Object.fromEntries() **************************/
+//This method transforms a list of key-value pair into an object
+const enteries = new Map([
+  ['name','Sahil'],
+  ['age',29]
+])
+
+const newPerson = Object.fromEntries(enteries)
+console.log(newPerson)
+//Object { name: "Sahil", age: 29 }
 
 
+/* *************** Object.getOwnPropertyDescriptors() *************** */
 
+//method returns all own property descriptors of a given object.
 
+const obj = {
+  name: 42
+}
+
+const descriptors = Object.getOwnPropertyDescriptors(obj);
+console.log(descriptors.name.writable);
+console.log(descriptors.name.value);
+
+//************ Object.isExtensible() ***************/
+//This method determines whether an object is extensible or not. If the object has been sealed,frozen or made non extensible then the value returned is false
+
+const testObj = {
+  name:"Sahil",
+  age:29
+}
+
+const frTestObj = Object.freeze(testObj);
+console.log(Object.isExtensible(frTestObj));
+//false
+
+//To freeze the current object, we can use Object.preventExtensions method
+
+Object.preventExtensions(testObj);
+console.log(Object.isExtensible(testObj))
+
+// Sealed objects are by definition non-extensible.
+var sealed = Object.seal(testObj);
+Object.isExtensible(sealed); // === false
+
+/* Object.keys() */
+//The Object.keys() method returns an array of a given object's own enumerable property names, iterated in the same order that a normal loop would.
+const person = {
+  name: "Sahil",
+  age: 29,
+  city: "Bangalore"
+}
+console.log(Object.keys(person));
+//Array(3) [ "name", "age", "city" ]
+
+/* Object.values() */
+//The Object.values() method returns an array of a given object's own enumerable values, iterated in the same order that a normal loop would.
+const person = {
+  name: "Sahil",
+  age: 29,
+  city: "Bangalore"
+}
+console.log(Object.keys(values));
+//Array(3) [ "Sahil", 29, "Bangalore" ]
