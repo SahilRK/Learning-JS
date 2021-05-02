@@ -441,3 +441,17 @@ const person = {
 }
 console.log(Object.keys(values));
 //Array(3) [ "Sahil", 29, "Bangalore" ]
+
+/////////////////////// Instance methods ////////////////////////////
+
+/* Object.prototype.hasOwnProperty() */
+//method returns a boolean indicating whether the object has the specified property as its own property. Method does not check for a property in the object's prototype chain.
+
+const person = {
+  name: "Sahil",
+  age: 29,
+  city: "Bangalore"
+}
+
+console.log(person.hasOwnProperty('name')) //true
+console.log(person.hasOwnProperty('name1')) //false
