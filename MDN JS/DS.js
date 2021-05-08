@@ -455,3 +455,142 @@ const person = {
 
 console.log(person.hasOwnProperty('name')) //true
 console.log(person.hasOwnProperty('name1')) //false
+
+////////////////////////////////// STRINGS //////////////////////////////////////
+
+//The String object is used to represent and manipulate a sequence of characters.
+
+//1: Comparing Strings
+//String comparision in Javascript is done using the <,>,==,=== operators. 
+let name = "12";
+let name1 = 12;
+if(name == name1){
+  console.log(true)
+}
+else{
+  console.log(false)
+}
+
+//true
+
+//The == operator performs a type conversion and hence the output turns out to be true. Whereas the === operator does a strict comparision which gives a false result for the same. Hence it is a better practice to use the === operator.
+
+//To compare the strings devoid of the case, use === operator with uppercase conversion.
+
+const strCompFunc = (str1,str2) => {
+  return str1.toUpperCase() === str2.toUpperCase()
+}
+
+const welcomeMsg1 = "Hello";
+const welcomeMsg2 = "hElLo"
+strCompFunc(welcomeMsg1,welcomeMsg2);
+
+//2: String length
+//This instance method is used to calculate the length of the string which is calculated in UTF-16 code units.
+
+let x = "Mozilla";
+console.log(`The length of the string ${x} is ${x.length}`)
+//The length of the string Mozilla is 7
+
+//Since the length property is a read only, there is no considerable effect if the length of the string is altered. The output does not change. Eg:
+let x = "Mozilla";
+console.log(`The length of the string ${x} is ${x.length}`)
+
+x.length = 4;
+console.log(`The length of the string ${x} is ${x.length}`)
+//The length of the string Mozilla is 7
+
+/************** String.concat() ********************/
+//The concat() method concatenates the string arguments to the calling string and returns a new string.
+
+//NOTE: It is strongly recommended that the assignment operators (+, +=) are used instead of the concat() method.
+const str1 = 'Hello';
+const str2 = 'Have a nice day';
+
+console.log(str1.concat('. ', str2));
+// expected output: "Hello. Have a nice day"
+
+/************** String.includes() ********************/
+//The includes() method performs a case-sensitive search to determine whether one string may be found within another string, returning true or false as appropriate.
+
+const str = 'To be, or not to be, that is the question.'
+str.includes("To bE")
+//false
+
+/************** String.endsWith() **************/
+//The endsWith() method determines whether a string ends with the characters of a specified string, returning true or false.
+
+const str = 'To be, or not to be, that is the question.'
+str.endsWith("question.");
+//true
+
+//When the second argument, 'length' is used, then the string is cut short to that length and is checked for endsWith a certain string. Eg.
+const str = 'To be, or not to be,that is the question';
+str.endsWith("be",19)
+//true - though the string length is 42, the instance method cuts short the string to the length mentioned in the second argument and checks for endsWith. NOTE. This only temporarily cuts short the string for comparision. The original string length does not change.
+
+/************************** String.indexOf *******************/
+//The indexOf() method returns the index within the calling String object of the first occurrence of the specified value, starting the search at fromIndex. Returns -1 if the value is not found. This method is case sensitive.
+
+const para = "The quick brown fox jumps over the lazy dog, if the dog barked, was it really lazy?";
+
+const searchTerm =  "dog";
+const indexOfTerm = para.indexOf(searchTerm);
+
+console.log(`The search term '${searchTerm}' was found at the location '${indexOfTerm}'`);
+
+console.log(`The second location of the search term '${searchTerm}' is '${para.indexOf(searchTerm,(indexOfTerm+1))}'`)
+//The search term 'dog' was found at the location '40'
+//The second location of the search term 'dog' is '52'
+
+//Similarly String.lastIndexOf(searchTerm,fromIndex) returns the last occurance of a search term.
+//The second location of the search term 'dog' is '52'
+
+/* ********************* String.match() ********************** */
+//The match() method retrieves the result of matching a string against a regular expression.
+
+const text = "Hello I am Sahil1";
+const regExp = /([A-Z][a-z])\w/g
+
+const result = text.match(regExp);
+console.log(result);
+//Array["Hello","Sahil1"]
+
+
+/* ************************ String.repeat ********************** */
+//The repeat() method constructs and returns a new string which contains the specified number of copies of the string on which it was called, concatenated together.
+
+const text = "Hello I am Sahil1. ";
+console.log(`Hi let me introduce myself. ${text.repeat(5)}`)
+//Hi let me introduce myself. Hello I am Sahil1. Hello I am Sahil1. Hello I am Sahil1. Hello I am Sahil1. Hello I am Sahil1.
+
+
+esicQzoneDt.Select("Convert(EmployeeID,System.String)='"+empID.ToString+"'").Length
+
+/* ******************* String.replace & String.replaceAll ********************** */
+const text = "Hello from the dog. This dog is my pet. "
+const regExp = /Dog/i
+
+console.log(text.replace(regExp,"cat"));
+//Hello from the cat. This dog is my pet.
+
+const text = "Hello from the dog. This dog is my pet. "
+const regExp = /Dog/gi
+
+console.log(text.replaceAll(regExp,"cat"));
+//Hello from the cat. This cat is my pet.
+
+/* ALSO - Adding a global replace "/g" in the regex for replace, replaces all the matched strings*/
+
+const text = "Hello from the dog. This dog is my pet. "
+const regExp = /Dog/gi
+
+console.log(text.replace(regExp,"cat"));
+//Hello from the cat. This cat is my pet.
+
+
+
+
+
+
+
