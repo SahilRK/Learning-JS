@@ -588,9 +588,41 @@ const regExp = /Dog/gi
 console.log(text.replace(regExp,"cat"));
 //Hello from the cat. This cat is my pet.
 
+/* ************** String.slice **************** */
+//The slice() method extracts a section of a string and returns it as a new string, without modifying the original string.
 
+/*The slice method accepts two parameters.
+1) startIndex: The zero-based index at which to begin extraction. 
+2) endIndex: The zero-based index at which to stop extraction. The character at this index will not be included. If endIndex is omitted or undefined, or greater than str.length, slice() extracts to the end of the string
+*/
 
+let str1 = 'The morning is upon us.';
+let str2 = str1.slice(1, 8);
+console.log(str2)  // OUTPUT: he morn
 
+/* **************** String.prototype.split() *********************
+The split() method divides a String into an ordered list of substrings, puts these substrings into an array, and returns the array.  The division is done by searching for a pattern; where the pattern is provided as the first parameter in the method's call. 
 
+Sting.split(separator,limit)
+//Separator(optional): The pattern describing where each split should occur.  The separator can be a simple string or it can be a regular expression.
+//Limit: splits the string at each occurrence of the specified separator, but stops when limit entries have been placed in the array. Any leftover text is not included in the array at all.
+*/
+//1: A single character separator is the easiest and is used to split a delimited(separated by a character.Eg:",",":","?") string. Eg:
+const str = "Hello this is a dog who is a part of a house";
+const result = str.split(" ");
+console.log(result);
+//Array(12) [ "Hello", "this", "is", "a", "dog", "who", "is", "a", "part", "of", … ]
 
+//2: By multiple characters in which the whole character sequence should be found.
+const str = "Hello this is a dog who is a part of a house";
+const result = str.split("is",3);
+console.log(result)
+//Array(3) [ "Hello th", " ", " a dog who " ]
+
+//3: By using regex as the separator, if the string contains the regex pattern based separators, the string is split based on the pattern.
+const str = "He llo this is a dog who is a part of this house";
+const regexp = /\s/g
+const result = str.split(regexp);
+console.log(result)
+//Array(13) [ "He", "llo", "this", "is", "a", "dog", "who", "is", "a", "part", … ]
 
