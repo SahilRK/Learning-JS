@@ -6,7 +6,9 @@ This is a reference guide for topics in Javascript and Web Designing
 5) List of Built-in Objects in JS: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 6) Deno JS: https://deno.land/
 7) ELK Stack: https://www.elastic.co/what-is/elk-stack
-
+8) Pre-Increment better than Post-Increment in Loops: https://betterprogramming.pub/stop-using-i-in-your-loops-1f906520d548
+9) Iteration Protocols: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols
+10) 
 
 
 Material Design:
