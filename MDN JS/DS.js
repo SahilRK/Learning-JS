@@ -626,3 +626,105 @@ const result = str.split(regexp);
 console.log(result)
 //Array(13) [ "He", "llo", "this", "is", "a", "dog", "who", "is", "a", "part", … ]
 
+
+/* ****************************************************** MAP *********************************************************** */
+
+//The Map object holds key-value pairs and remembers the original insertion order of the keys. Any value may be used as a key or value
+//A Map object iterates its elements in insertion order — a for...of loop returns an array of [key, value] for each iteration
+
+//Key Equality
+
+//Key equality is based on the sameValueZero(+0 and -0 are the same) alog. In the current ECMAScript specification, -0 and +0 are considered equal, although this was not so in earlier drafts.
+//NaN is considered the same as NaN (even though NaN !== NaN) and all other values are considered equal according to the semantics of the === operator.
+
+
+//Objects vs. Maps
+
+//Object is similar to Map—both let you set keys to values, retrieve those values, delete keys, and detect whether something is stored at a key. For this reason (and because there were no built-in alternatives), Object has been used as Map historically.
+//Difference between Map and Objects
+/* 
+1: Accidental Keys
+MAP - A Map does not contain any keys by default. It only contains what is explicitly put into it.
+Objects - An Object has a prototype, so it contains default keys that could collide with your own keys if you're not careful.
+
+2: Key types
+MAP: A Map's keys can be any value (including functions, objects, or any primitive).
+Object: Must be either a String or a Symbol
+
+3: Key Order
+MAP: The keys in Map are ordered in a simple, straightforward way: A Map object iterates entries, keys, and values in the order of entry insertion.
+Object: Although the keys of an ordinary Object are ordered now, this was not always the case, and the order is complex. As a result, it's best not to rely on property order.
+
+4: Size
+MAP: The number of items in a Map is easily retrieved from its size property.
+Object: Object.keys(<obj>).length - This
+Object.keys or Object.getOwnPropertyNames does not work for symbolic properties. To return them you need to use Object.getOwnPropertySymbols.
+
+var person = {
+  [Symbol('name')]: 'John Doe',
+  [Symbol('age')]: 33,
+  "occupation": "Programmer"
+};
+
+const propOwn = Object.getOwnPropertyNames(person);
+console.log(propOwn.length); // 1
+
+let propSymb = Object.getOwnPropertySymbols(person);
+console.log(propSymb.length); // 2
+
+//NOTE: Hence the size of the object can be incorrect if there are a mix of symbols and strings.The below code can be used as a workaround
+
+const objTotLength = Object.getOwnPropertyNames(person).length+ Object.getOwnPropertySymbols(person).length;
+
+5: Iteration: 
+MAP: Is an iterable nad hence can be directly iterated. It is based on the iterable protocol which allows JavaScript objects to define or customize their iteration behavior, such as what values are looped over in a for...of construct. In order to be iterable, an object must implement the @@iterator method, which means that it must have a property with @@iterator key.
+Object: Object does not implement an iteration protocol, and so objects are not directly iterable using the JavaScript for...of statement (by default).
+
+NOTE: An object can implement the iteration protocol, or you can get an iterable for an object using Object.keys or Object.entries.
+The for...in statement allows you to iterate over the enumerable properties of an object.
+
+6: Performance
+MAP: Performs better in scenarios involving frequent additions and removals of key-value pairs.
+Object: Not optimized for frequent additions and removals of key-value pairs.
+
+7: Serialisation and parsing
+MAP: Does not have native support for both serialisation and parsing
+Object: Has native support for both serialisation and parsing
+*/
+
+//Key value in map can be set like an object as seen below.
+let person = new Map();
+person['name'] = 'Sahil';
+person['age'] = 29;
+
+console.log(person);
+​/*
+Map(0)
+age: 29
+name: "Sahil"
+size: 0
+<entries>
+<prototype>: Map.prototype { … }
+*/
+//But that way of setting a property does not interact with the Map data structure. It uses the feature of the generic object. The value of 'bla' is not stored in the Map for queries. Other operations on the data fail: Eg:
+wrongMap.has('bla')    // false
+wrongMap.delete('bla') // false
+console.log(wrongMap)  // Map { bla: 'blaa', bla2: 'blaaa2' }
+
+//The correct way to use maps to store data is using the set(key,value) method
+let person = new Map();
+person.set('name','Sahil');
+person.set('age',29);
+person.set('address',{'home':'F4','city':'bangalore'});
+console.log(person);
+/* 
+Map(3)
+size: 2
+<entries>
+0: name → "Sahil"
+1: address → Object { home: "F4", city: "bangalore" }
+*/
+person.get('age')
+person.delete('age')
+console.log(person);
+
