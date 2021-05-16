@@ -728,3 +728,130 @@ person.get('age')
 person.delete('age')
 console.log(person);
 
+/***************** MAP.size ******************/
+//The size accessor property returns the number of elements in a Map object
+person.size;
+//2
+
+/***************** MAP.clear() ******************/
+//The clear() method removes all elements from a Map object.
+person.clear();
+//0
+
+/***************** MAP.delete() ******************/
+//The delete() method removes the specified element from a Map object by key.
+//returns true if an element in the Map object existed and has been removed, or false if the element does not exist.
+person.delete('age');
+//true
+
+/******************** MAP.get() ***********************/
+//The get() method returns a specified element from a Map object. If the value that is associated to the provided key is an object, then you will get a reference to that object and any change made to that object will effectively modify it inside the Map object.
+//returns the element associated with the specified key, or undefined if the key can't be found in the Map object.
+person.get('age');
+//29
+
+/* ************** Map.has()******************* */
+//The has() method returns a boolean indicating whether an element with the specified key exists or not.
+//true if it exists, otherwise false
+person.has('age');
+//true
+
+/* ************** Map.set()******************* */
+//The set() method adds or updates an element with a specified key and a value to a Map object.
+//returns the MAP object
+person.set('name','Sahil');
+//true
+
+////////// Iteration methods
+
+/* ************** Map.keys()******************* */
+//The keys() method returns a new Iterator object that contains the keys for each element in the Map object in insertion order.
+//returns a new Mao iterator object
+const persIter = person.keys();
+for(key of perIter){
+  console.log(key);
+}
+//name
+//age
+//address
+
+//OR 
+
+console.log(persIter.next().value);
+//name
+console.log(persIter.next().value);
+//age
+console.log(persIter.next().value);
+//address
+
+/* ************** Map.values()******************* */
+//The values() method returns a new Iterator object that contains the values for each element in the Map object in insertion order.
+//returns a new Mao iterator object
+
+const persIter = person.values();
+for(value of perIter){
+  console.log(value);
+}
+//Sahil
+//29
+//Object { home: "F4", city: "bangalore" }
+
+//OR 
+
+console.log(persIter.next().value);
+//Sahil
+console.log(persIter.next().value);
+//29
+console.log(persIter.next().value);
+//Object { home: "F4", city: "bangalore" }
+
+/* ************** Map.entries()******************* */
+//The entries() method returns a new Iterator object that contains the [key, value] pairs for each element in the Map object in insertion order. In this particular case, this iterator object is also an iterable, so the for-of loop can be used
+//returns a new Mao iterator object
+const perIter = person.entries();
+for([key,value] of perIter){
+  console.log(key);
+  console.log(value);
+}
+//name
+//Sahil
+//age
+//29
+//address
+//Object { home: "F4", city: "bangalore" }
+
+/* ************** Map.forEach()******************* */
+//The forEach() method executes a provided function once per each key/value pair in the Map object, in insertion order. It is not invoked for keys which have been deleted. However, it is executed for values which are present but have the value undefined.
+/*
+callback is invoked with three arguments:
+
+the entry's value
+the entry's key
+the Map object being traversed
+*/
+
+//If a thisArg parameter is provided to forEach, it will be passed to callback when invoked, for use as its this value.
+
+person.forEach((value,key)=>{
+  console.log(`Value for ${key} is ${value}`)
+});
+//Value for name is Sahil
+//Value for age is 29
+//Value for address is [object Object]
+
+//************** Relation with Array objects
+
+//A 2d arr can be transform to a Map since the construct of a 2d array is similar to a map with the first element in the inner array being the key and second being a value.
+let arr2d = [['name','Sahil'],['age',29]]
+let arrToMap = new Map(arr2d);
+
+arrToMap.get('age');
+//29
+
+//Array.from can be used to transform a map back to a 2d array
+let mapToArr = arrToMap.from(arrToMap);
+
+//to convert the outputs of keys() or values() to array, we can do the following
+let mapKeysArr = Array.from(arrToMap.keys());
+console.log(mapKeysArr);
+//["name","age"]
