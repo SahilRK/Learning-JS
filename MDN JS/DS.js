@@ -714,6 +714,8 @@ console.log(wrongMap)  // Map { bla: 'blaa', bla2: 'blaaa2' }
 //The correct way to use maps to store data is using the set(key,value) method
 let person = new Map();
 person.set('name','Sahil');
+person.set('name','Sameer');
+//Map { name → "Sameer" } - map takes the latest value, when trying to set another value on the same key
 person.set('age',29);
 person.set('address',{'home':'F4','city':'bangalore'});
 console.log(person);
@@ -855,3 +857,64 @@ let mapToArr = arrToMap.from(arrToMap);
 let mapKeysArr = Array.from(arrToMap.keys());
 console.log(mapKeysArr);
 //["name","age"]
+
+
+
+
+/* **************************************************** SET ********************************************************** */
+//1: The Set object lets you store unique values of any type, whether primitive values or object references
+//2: Set objects are collections of values. You can iterate through the elements of a set in insertion order. A value in the Set may only occur once; it is unique in the Set's collection.
+//3: Because each value in the Set has to be unique, the value equality will be checked. In an earlier version of ECMAScript specification, this was not based on the same algorithm as the one used in the === operator. Specifically, for Sets, +0 (which is strictly equal to -0) and -0 were different values. However, this was changed in the ECMAScript 2015 specification. See "Key equality for -0 and 0" in the browser compatibility table for details.
+//4: NaN and undefined can also be stored in a Set. All NaN values are equated (i.e. NaN is considered the same as NaN, even though NaN !== NaN).
+
+/******* Set constructor *******/
+const set1 = new Set([1,2,3,4,5]);
+
+/******* Set size *******/
+//The size accessor property returns the number of (unique) elements in a Set object.
+const setSize = set1.size;
+//5
+
+/******* Set add *******/
+//The add() method appends a new element with a specified value to the end of a Set object.
+set1.add(6);
+
+/******* Set clear *******/
+//The clear() method removes all elements from a Set object.
+set1.clear();
+set1.size;
+//0
+
+/******* Set delete *******/
+//The delete() method removes a specified value from a Set object, if it is in the set.
+set1.delete(2);
+console.log(set1);
+
+/* Set.has */
+//The has() method returns a boolean indicating whether an element with the specified value exists in a Set object or not.
+set1.has(6);
+//false
+
+/* Set.values() */
+//The values() method returns a new iterator object that contains the values for each element in the Set object in insertion order.
+const set1 = new Set([1,2,3,4,5]);
+const valInSet = set1.values()
+console.log(valInSet.next().value)
+//1
+console.log(valInSet.next().value);
+//2
+
+/* Set.prototype.entries() */
+//The entries() method returns a new Iterator object that contains an array of [value, value] for each element in the Set object, in insertion order. For Set objects there is no key like in Map objects. However, to keep the API similar to the Map object, each entry has the same value for its key and value here, so that an array [value, value] is returned.
+
+const valInSet = set1.entries();
+for(let[value,value1] of valInSet){
+  console.log(value);
+}
+/*
+1
+2
+3
+4
+5
+*/
