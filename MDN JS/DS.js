@@ -714,6 +714,8 @@ console.log(wrongMap)  // Map { bla: 'blaa', bla2: 'blaaa2' }
 //The correct way to use maps to store data is using the set(key,value) method
 let person = new Map();
 person.set('name','Sahil');
+person.set('name','Sameer');
+//Map { name → "Sameer" } - map takes the latest value, when trying to set another value on the same key
 person.set('age',29);
 person.set('address',{'home':'F4','city':'bangalore'});
 console.log(person);
@@ -855,3 +857,15 @@ let mapToArr = arrToMap.from(arrToMap);
 let mapKeysArr = Array.from(arrToMap.keys());
 console.log(mapKeysArr);
 //["name","age"]
+
+
+
+
+/* **************************************************** SET ********************************************************** */
+//1: The Set object lets you store unique values of any type, whether primitive values or object references
+//2: Set objects are collections of values. You can iterate through the elements of a set in insertion order. A value in the Set may only occur once; it is unique in the Set's collection.
+//3: Because each value in the Set has to be unique, the value equality will be checked. In an earlier version of ECMAScript specification, this was not based on the same algorithm as the one used in the === operator. Specifically, for Sets, +0 (which is strictly equal to -0) and -0 were different values. However, this was changed in the ECMAScript 2015 specification. See "Key equality for -0 and 0" in the browser compatibility table for details.
+//4: NaN and undefined can also be stored in a Set. All NaN values are equated (i.e. NaN is considered the same as NaN, even though NaN !== NaN).
+
+//****** Set constructor *******/
+const set1 = new Set([1,2,3,4,5]);
