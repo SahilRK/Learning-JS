@@ -137,6 +137,14 @@ console.log(a);
 //In the above example, both let and var behave the same, since the variable "a" with the value 10 is local only to the function block.
 //** NOTE: Function blocks affect both var and let since the variable declared inside them is local and only remains as long as it is inside the function.
 
+/********************************** Lexical Scoping *****************************/
+//Lexical scoping: Variables declared outside of a function are global variables and are visible everywhere in a JavaScript program. Variables declared inside a function have function scope and are visible only to code that appears inside that function
+var x = 2;
+var add = function() {
+    var y = 1;
+    return x + y;
+};
+
 /********************************** VAR vs LET *****************************
 1) var is hoisted( can be declared after it has been initialised ), where as let is not hoisted
 2) Using let makes code redability and maintenance easier since it forces you to declare the variable and then use it.
