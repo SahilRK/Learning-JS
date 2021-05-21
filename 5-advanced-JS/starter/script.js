@@ -135,8 +135,8 @@ console.log(obj1.yearOfBirth);
  */
 
  //CLOSURES- They are functions that return functions and can access the arguments passed to the parent function--------------
-/* 
- function interviewQuesion(job){
+ 
+/*  function interviewQuesion(job){
      return function(name){
          if(job === 'teacher'){
              console.log("Hi "+name+". "+job+" is your profession.");
@@ -150,11 +150,10 @@ console.log(obj1.yearOfBirth);
      }
  }
 
- var teacherQuestion = interviewQuesion('teacher');
+
+ let teacherQuestion = interviewQuesion('teacher');
  teacherQuestion('Sahil');
 
- var designerQuestion = interviewQuesion('designer');
-  designerQuestion('john'); */
-
-  //------------------------------------------------------------------//
+ let designerQuestion = interviewQuesion('designer');
+ designerQuestion('john'); */
 
