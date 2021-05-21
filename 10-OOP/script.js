@@ -19,7 +19,7 @@
 
 There are 3 ways to implement OOPS.
 */
-//1) Constructor function
+//*********************** 1) Constructor function ************************//
 /*
 1) This function is called with a new operator to create an object instance.
 2) Constructor functions always start with a calpital letter(in convention with OOP)
@@ -61,3 +61,58 @@ Object.prototype is the last in the prototype chain and its __proto__ property p
 
 */
 
+/************************** 2) ES6 Classes ********************/
+
+class Person{
+    //The constructor function has a name constructor
+    constructor(firstName,birthYear){
+        this.firstName = firstName;
+        this.birthYear = birthYear;
+    }
+
+    calcAge(){
+        console.log(2021 - this.birthYear);
+    }
+}
+
+const person1 = new Person(firstName,birthYear);
+console.log(person1.calcAge());
+
+//1: Classes are just syntactic sugar written on top of Object prototype interally use prototypal inheritance
+//2: Classes are not hoisted. They have to be declared first.
+//3: Classes are first class citizens which means that they also can be passed to other functions.
+//4: Classes are always executed in strict mode.
+
+/* Inheritance between classes using constructor functions */
+//1) Create a person constructor
+
+const Person = function(firstName,birthYear){
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+}
+
+Person.prototype.calcAge = function(){
+    const currDate = new Date(Date.now());
+    const fullYear = currDate.getFullYear();
+    this.age = fullYear - this.birthYear;
+}
+
+/* let person1 = new Person('Sahil',1992);
+person1.calcAge();
+console.log(person1);
+ */
+
+//Create a child class called Student which belongs to Person
+const Student = function(firstName,birthYear,course){
+    //Person(firstName,birthYear); -- This does not work since in regular function call, the 'this' keyword is set to undefined
+    //To call the person function we do the below. 1) Pass the this value to the function via the call method.
+    Person.call(this,firstName,birthYear);
+    this.course = course;
+}
+
+Student.prototype.introduce = function(){
+    console.log(`My name is ${this.firstName} and I study ${this.course}`)
+}
+
+let sahil = new Student('Sahil',1992,'Computer Science');
+sahil.introduce();
