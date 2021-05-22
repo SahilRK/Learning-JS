@@ -83,7 +83,8 @@ console.log(person1.calcAge());
 //3: Classes are first class citizens which means that they also can be passed to other functions.
 //4: Classes are always executed in strict mode.
 
-/* Inheritance between classes using constructor functions */
+/************* Inheritance between classes using constructor functions *************** */
+
 //1) Create a person constructor
 
 const Person = function(firstName,birthYear){
@@ -97,18 +98,19 @@ Person.prototype.calcAge = function(){
     this.age = fullYear - this.birthYear;
 }
 
-/* let person1 = new Person('Sahil',1992);
-person1.calcAge();
-console.log(person1);
- */
-
-//Create a child class called Student which belongs to Person
+//2) Create a child class called Student which belongs to Person
 const Student = function(firstName,birthYear,course){
     //Person(firstName,birthYear); -- This does not work since in regular function call, the 'this' keyword is set to undefined
     //To call the person function we do the below. 1) Pass the this value to the function via the call method.
     Person.call(this,firstName,birthYear);
     this.course = course;
 }
+//Inorder for the student constructor function to inherit from the person constructor function, we need to assign the Person object as a prototype to Student object.
+//NOTE: This line of code has to added immediately after the constructor and before adding any methods to the prototype since it clears the existing prototype and assigns the prototype mentioned in the parameter of the Object.create(param1).
+
+//As seen below we want to inherit from the Person object but dont want it to be the exact same object. Hence we use Object.create.
+
+Student.prototype = Object.create(Person.prototype);
 
 Student.prototype.introduce = function(){
     console.log(`My name is ${this.firstName} and I study ${this.course}`)
@@ -116,3 +118,9 @@ Student.prototype.introduce = function(){
 
 let sahil = new Student('Sahil',1992,'Computer Science');
 sahil.introduce();
+
+//This uses the concept of prototpe chain( basically inheritance ). So when Javascript cannot find the below method in the Student prototype, it looks for the method in the parent's prototype and keeps looking up the chain till it finds the method in one of the prototypes.
+sahil.calcAge();
+console.log(sahil);
+
+
