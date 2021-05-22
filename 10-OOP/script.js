@@ -124,3 +124,39 @@ sahil.calcAge();
 console.log(sahil);
 
 
+/* ********************** Inheritance between classes using classes ************************** */
+class PersonCl{
+    constructor(firstName,birthYear){
+        this.firstName = firstName;
+        this.birthYear = birthYear;
+    }
+
+    calcAge(){
+        const currDate = new Date(Date.now());
+        const currYear = currDate.getFullYear();
+        this.age = currYear - this.birthYear;
+    }
+}
+
+//To apply the concept of inheritance between classes in ES6, we need 2 keywords. super and extends.
+//extends keyword links the two class prototypes behind the scenes (StudentCl.prototype = Object.create(PersonCl.prototype);)
+
+class StudentCl extends PersonCl{
+    constructor(firstName,birthYear,course){
+        //Here we use the super() function which basically calls the PersonCl class in the background and passes the this keyword to fetch the properties from the parent class. This works as follows in the background that we have seen in the constructor function inheritance above.(PersonCl.call(this,firstName,birthYear)); 
+        //super is basically the constructor function of the parent class.
+
+        //***** NOTE: This always needs to happen first. This is because, this class to the super function is responsible for creating the "this" keyword in the subclass.
+        super(firstName,birthYear);
+        this.course = course;
+    }
+    
+    introduce(){
+        console.log(`Hey my name is ${this.firstName}. I am ${this.age} years old. I study ${this.course}`)
+    }
+
+}
+
+const sahil = new StudentCl('Sahil',1992,'Computer Science');
+sahil.calcAge();
+sahil.introduce();
