@@ -249,7 +249,15 @@ new String(thing) -- This syntax creates a string object
 String(thing) -- This is used for type conversion to a primitive string
 */
 
-//***NOTE: String(value) syntax can be used as a more reliable syntax for type conversion than the toString() method.
+/* It's possible to use String as a more reliable toString() alternative, as it works when used on null and undefined. For example:
+
+const nullVar = null;
+nullVar.toString();       // TypeError: nullVar is null
+String(nullVar);          // "null"
+
+const undefinedVar;
+undefinedVar.toString();  // TypeError: undefinedVar is undefined
+String(undefinedVar);     // "undefined" */
 //For reference on Strings https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
 
 /********************************** Number Objects ***********************************/
@@ -304,7 +312,7 @@ var x = new Boolean(expression); // don't use this!
 let sym1 = Symbol("sym");
 //2: Every symbol created, has a unique value. Eg
 let sym1 = Symbol("sym");
-let sym2 = Symbol("sym");
+let sym2 = Symbol("sym"); 
 console.log(sym1 === sym2);
 //3: No two symbols can be equal even if they are assigned in a similar way, since each symbol produces a unique value.
 //4: Symbols can hence be used as object properties.

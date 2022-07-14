@@ -65,6 +65,7 @@ console.log(fruits);
 let fruits = new Array('Apple','Orange','Banana');
 let fruit_idx = fruits.indexOf("Orange");
 console.log(`Index of Orange is ${fruit_idx}`);
+//NOTE: If the element is not found, -1 is returned back which indicates that the element does not exist;
 
 //Return array element at index location - EXPERIMENTAL
 let fruits = new Array('Apple','Orange','Banana');
